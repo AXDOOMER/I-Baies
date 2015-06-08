@@ -1,0 +1,72 @@
+﻿@model IEnumerable<WebApplication1.Models.ItemsTable>
+@{
+    ViewBag.Title = "HistoriqueAchat";
+}
+
+<style>
+    span {
+        font-family: Arial;
+        font-size: large;
+        width: 100%;
+    }
+
+    table {
+        background-color: rgba(185, 159, 217, 0.12);
+    }
+
+    td {
+        border: rgba(15, 35, 64, 0.54) 6px;
+        border-style: double;
+    }
+
+    tr {
+        height: 120px;
+    }
+
+    .noms {
+        width: 500px;
+        text-align: center;
+    }
+
+    .prix {
+        width: 110px;
+        text-align: center;
+    }
+</style>
+
+<h2>L'historique de vos achats</h2>
+@using (Html.BeginForm())
+{
+    if (Model.Count() > 0 && Model.ElementAt(0) != null)
+    {
+        string[] temp = ViewData["NombreBais"].ToString().Split(';');
+        int compteur = 0;
+        <table>
+            @for (int i = 0; i < 20 && i < Model.Count(); i++)
+{
+                <tr>
+                    <td>
+                        <img src="~/Images/@Html.DisplayFor(modelItem => Model.ElementAt(i).PicturePath)" width="120" height="120" />
+                    </td>
+                    <td class="noms">
+                        <span>@Html.DisplayFor(modelItem => Model.ElementAt(i).Summary)</span>
+                    </td>
+                    <td class="prix">
+                        <span>@Html.DisplayFor(modelItem => Model.ElementAt(i).Price).00$</span>
+                    </td>
+                    <td class="prix">
+                        @temp[compteur]                     
+                    </td>
+                </tr>
+                compteur++;
+            }
+            <tr>
+                <td colspan="4" align="center"> Total d'argent dépensé : @ViewData["PrixTotal"].ToString() $</td></tr>
+        </table>
+    }
+    else
+    {
+        <h4>Rien dans votre historique d'achat</h4>
+    }
+}
+

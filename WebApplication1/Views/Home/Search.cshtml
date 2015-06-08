@@ -1,0 +1,95 @@
+﻿@model IEnumerable<WebApplication1.Models.ItemsTable>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<style>
+    span {
+        font-family: Arial;
+        font-size: large;
+        width: 100%;
+    }
+
+    table {
+        background-color: rgba(185, 159, 217, 0.12)
+    }
+
+    td {
+        border: rgba(15, 35, 64, 0.54) 6px;
+        border-style: double;
+    }
+
+    tr {
+        height: 120px;
+    }
+
+    .noms {
+        width: 500px;
+        text-align: center;
+    }
+
+    .prix {
+        width: 110px;
+        text-align: center;
+    }
+
+    .center {
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        height: 60px;
+        width: initial;
+    }
+
+    .floatleft {
+        float: left;
+        padding-top: 10px;
+    }
+
+    .floatright {
+        float: right;
+        padding-top: 10px;
+    }
+</style>
+
+<h2>Résultats de recherche</h2>
+<!-- C'est moi qui ajouter sa, c'est utile pour les boutons submits-->
+@using (Html.BeginForm())
+{
+    if (Model.Count() > 0 && Model.ElementAt(0) != null)
+    {
+        <table>
+            @for (int i = 0; i < 20 && i < Model.Count(); i++)
+            {
+                <tr>
+                    <td>
+                        <input class="image" type="submit" name="BTN_Submit" value="@Model.ElementAt(i).ID" style="background: url(/Images/@Html.DisplayFor(modelItem => Model.ElementAt(i).PicturePath)) no-repeat; width: 150px; height: 150px; background-size: 100% 100%; text-indent: 100%; white-space: nowrap; overflow: hidden;" />
+                    </td>
+                    <td class="noms">
+                        <span>@Html.DisplayFor(modelItem => Model.ElementAt(i).Summary)</span>
+                    </td>
+                    <td class="prix">
+                        <span>@Html.DisplayFor(modelItem => Model.ElementAt(i).Price).00$</span>
+                    </td>
+                </tr>
+            }
+        </table>
+        <!--MARCHE PAS!-->
+        <!--<div class="center">
+            <div class="floatleft">
+                <input class="image" type="submit" name="BTN_Submit" value="PREV" style="background: url('/Content/previous.jpg') no-repeat; width: 50px; height: 50px; background-size: 100% 100%; text-indent: 100%; white-space: nowrap; overflow: hidden;" />
+            </div>
+            <div class="floatright">
+                <input class="image" type="submit" name="BTN_Submit" value="NEXT" style="background: url('/Content/next.jpg') no-repeat; width: 50px; height: 50px; background-size: 100% 100%; text-indent: 100%; white-space: nowrap; overflow: hidden;" />
+            </div>
+        </div>-->
+    }
+    else
+    {
+        <h4>Aucun élément correspondant à votre recherche n'a été trouvé. </h4>
+        <h4>Essayez quelque chose de plus simple... (genre "baie")</h4>
+    }
+}
+

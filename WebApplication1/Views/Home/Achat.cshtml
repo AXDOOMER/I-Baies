@@ -1,0 +1,89 @@
+﻿@model WebApplication1.Models.ItemsTable
+@{
+    ViewBag.Title = "Achat";
+}
+
+<style>
+    table {
+        background-color: rgba(185, 159, 217, 0.12);
+    }
+
+    td {
+        border: rgba(15, 35, 64, 0.54) 2px;
+        border-style: solid;
+    }
+
+    th {
+        border: rgba(15, 35, 64, 0.54) 2px;
+        border-style: solid;
+        text-align: center;
+    }
+
+    textarea {
+        width: 1000px;
+        height: 120px;
+        border: 3px solid #cccccc;
+        padding: 5px;
+        font-family: Tahoma, sans-serif;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        resize: vertical;
+    }
+
+    .commentsize {
+        max-width: 500px;
+        word-wrap: break-word;
+    }
+
+</style>
+
+<h2>Faire l'achat...</h2>
+@using (Html.BeginForm())
+{
+    string[] temp = {"Aucun commentaire"};
+    if (ViewData["Comments"] != null)
+    {
+        string[] temp2 = ViewData["Comments"].ToString().Split(';');
+        temp = temp2;
+    }          
+    
+    // Andy: oopsy. code deleté par accident.  :-(
+    
+    <table border="2" cellpadding="4">
+        <tr>
+            <td rowspan="4"><img class="item" src="~/Images/@Model.PicturePath" width="300" height="300" /></td>
+            <td>@Model.Description</td>
+        </tr>
+        <tr>
+            <td>Prix : @Model.Price $</td>
+        </tr>
+        <tr>
+            <td>Quantité voulue @Html.TextBox("Quantity", 1, new { maxlength = 2 })</td>
+        </tr>
+<!--    <tr>
+            <td id="CoutTotal">Coût total :   $</td>
+        </tr>-->    <!-- I 8 U -->
+        <tr>
+            <td><input type="submit" name="BTN_Submit" value="Acheter"/></td>
+        </tr>
+        <tr>
+            <th colspan="2">Commentaires d'autres utilisateurs : </th>
+        </tr>
+        @for(int i = 0 ; i < temp.Length ; i++)
+        {               
+            <tr>
+                <td width="150" colspan="2"><div class="commentsize">@temp[i]</div></td>
+            </tr>
+        }
+        <tr>
+            <th colspan="2">Entrez votre commentaire : </th>
+        </tr>
+        <tr>
+            <td colspan="2">@Html.TextArea("Commentaire", null, new { maxlength = 199 })</td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" name="BTN_Submit" value="Soumettre le commentaire"/></td>
+        </tr>
+    </table>
+}
+

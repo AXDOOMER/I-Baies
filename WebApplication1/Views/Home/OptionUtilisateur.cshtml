@@ -1,0 +1,95 @@
+﻿@model WebApplication1.Models.UsersTable
+@{
+    ViewBag.Title = "OptionUtilisateur";
+}
+
+<h3>Options d'utilisateur</h3>
+<h2>Bonjour! @Model.Prenom @Model.Nom</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <!--- <div class="form-group">
+            @Html.LabelFor(model => model.Prenom, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Prenom, new { @Value = Model.Prenom })
+                @Html.ValidationMessageFor(model => model.Prenom)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nom, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Nom, new { @Value = Model.Nom })
+                @Html.ValidationMessageFor(model => model.Nom)
+            </div>
+        </div> 
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.UserName, new { @Value = Model.UserName })
+                @Html.ValidationMessageFor(model => model.UserName)
+            </div>
+        </div> -->
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Password, new { @Value = Model.Password })
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Address, new { @Value = Model.Address })
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CityProvince, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CityProvince, new { @Value = Model.CityProvince})
+                @Html.ValidationMessageFor(model => model.CityProvince)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostalCode, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PostalCode, new { @Value = Model.PostalCode})
+                @Html.ValidationMessageFor(model => model.PostalCode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreditCard, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CreditCard, new { @Value = Model.CreditCard })
+                @Html.ValidationMessageFor(model => model.CreditCard)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email, new { @Value = Model.Email})
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="BTN_Submit" value="Update" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

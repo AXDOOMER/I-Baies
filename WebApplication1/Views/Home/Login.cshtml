@@ -1,0 +1,48 @@
+﻿@model WebApplication1.Models.UsersTable
+
+<!--Ouverture d'un usager-->
+<!--Demander le password et la username-->
+
+@{
+    ViewBag.Title = "Se connecter à son compte";
+}
+
+<h2>Connexion</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName) @if (ViewBag.Error == "Nom d'usager invalide. ")
+                {<span style="color: #b94a48">@ViewBag.Error</span>}
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password) @if (ViewBag.Error == "Mot de passe invalide.")
+                {<span style="color: #b94a48">@ViewBag.Error</span>}
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
