@@ -1,7 +1,7 @@
 # I-Baies
-Site WEB en MVC fait en collaboration avec Andy Sergerie
+Site Web en ASP.NET MVC fait en collaboration avec Andy Sergerie. Voici un survol du site avec quelques prises d'écran. 
 
-# Page d'accueil avec mignatures des items les plus populaires. Voici un survol du site avec quelques prises d'écran. 
+# Page d'accueil avec mignatures des items les plus populaires. 
 ![page accueil](https://cloud.githubusercontent.com/assets/6194072/18690353/ae6bc508-7f5b-11e6-80d1-1aa48ff3d1a2.png)
 
 # Moteur de recherche
