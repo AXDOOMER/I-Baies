@@ -1,6 +1,14 @@
 # I-Baies
 Site Web en ASP.NET MVC fait en collaboration avec Andy Sergerie. Voici un survol du site avec quelques prises d'écran. 
 
+Technologies utilisées:
+* Application Web client/serveur en ASP.NET
+* MVC 5
+* RAZOR 3.0
+* SQL Express 2012 et fonctionnalités CRUD
+* BootStrap
+* jQuery
+
 # Page d'accueil avec mignatures des items les plus populaires. 
 ![page accueil](https://cloud.githubusercontent.com/assets/6194072/18690353/ae6bc508-7f5b-11e6-80d1-1aa48ff3d1a2.png)
 
